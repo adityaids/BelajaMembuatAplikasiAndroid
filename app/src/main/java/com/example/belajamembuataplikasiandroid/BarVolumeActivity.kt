@@ -29,18 +29,32 @@ class BarVolumeActivity : AppCompatActivity(), View.OnClickListener{
         btnHitung.setOnClickListener(this)
     }
 
-    override fun onClick(v: View) {
-        when(v.id) {
-            R.id.btn_hitung -> {
-                val length = edtLength.text.toString().trim()
-                val height = edtHeight.text.toString().trim()
-                val width = edtWidth.text.toString().trim()
-                tvResult.text = hitungVolume(length.toDouble(), height.toDouble(), width.toDouble()).toString()
+    override fun onClick(v: View?) {
+        if (v?.id == R.id.btn_hitung) {
+            val inputLength = edtLength.text.toString().trim()
+            val inputWidth = edtWidth.text.toString().trim()
+            val inputHeight = edtHeight.text.toString().trim()
+            var isEmptyField = false
+
+            when {
+                inputLength.isEmpty() -> {
+                    isEmptyField = true
+                    edtLength.error = "Field ini tidak boleh kosong"
+                }
+                inputWidth.isEmpty() -> {
+                    isEmptyField = true
+                    edtWidth.error = "Field ini tidak boleh kosong"
+                }
+                inputHeight.isEmpty() -> {
+                    isEmptyField = true
+                    edtHeight.error = "Field ini tidak boleh kosong"
+                }
+            }
+
+            if (!isEmptyField) {
+                val volume = inputLength.toDouble() * inputWidth.toDouble() * inputHeight.toDouble()
+                tvResult.text = volume.toString()
             }
         }
-    }
-
-    fun hitungVolume(valueA: Double, valueB: Double, valueC: Double) : Double {
-        return valueA * valueB * valueC
     }
 }
