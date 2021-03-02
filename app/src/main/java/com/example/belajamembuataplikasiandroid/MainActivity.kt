@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.btn_intent -> {
-                val intent = Intent(this@MainActivity, BelajarIntent::class.java)
+                val intent = Intent(this@MainActivity, BelajarIntentActivity::class.java)
                 startActivity(intent)
             }
         }

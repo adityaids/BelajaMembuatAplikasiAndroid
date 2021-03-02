@@ -7,4 +7,7 @@
     <string name="lebar">Lebar</string>
     <string name="hasil">Hasil</string>
     <string name="intent">Intent</string>
+    <string name="move_activity">Move Activity</string>
+    <string name="move_with_data">Move With Data</string>
+    <string name="dial_number">Dial Number</string>
 </resources>

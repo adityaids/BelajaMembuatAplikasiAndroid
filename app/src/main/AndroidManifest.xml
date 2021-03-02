@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BelajaMembuatAplikasiAndroid">
-        <activity android:name=".MoveActivity"></activity>
-        <activity android:name=".BelajarIntent" />
+        <activity android:name=".MoveWithDataActivity"></activity>
+        <activity android:name=".MoveActivity" />
+        <activity android:name=".BelajarIntentActivity" />
         <activity android:name=".BarVolumeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
