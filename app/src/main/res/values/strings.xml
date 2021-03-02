@@ -6,4 +6,5 @@
     <string name="tinggi">Tinggi</string>
     <string name="lebar">Lebar</string>
     <string name="hasil">Hasil</string>
+    <string name="intent">Intent</string>
 </resources>
