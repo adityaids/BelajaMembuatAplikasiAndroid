@@ -13,6 +13,12 @@ import com.bumptech.glide.request.RequestOptions
 
 class CardViewHeroAdapter(val listHero: ArrayList<Hero>): RecyclerView.Adapter<CardViewHeroAdapter.CardViewHolder>() {
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card_hero, parent, false)
         return CardViewHolder(view)
@@ -32,7 +38,7 @@ class CardViewHeroAdapter(val listHero: ArrayList<Hero>): RecyclerView.Adapter<C
         holder.tvDetail.text = hero.detail
         holder.btnFavorite.setOnClickListener { Toast.makeText(holder.itemView.context, "Favorite " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show() }
         holder.btnShare.setOnClickListener { Toast.makeText(holder.itemView.context, "Share " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show() }
-        holder.itemView.setOnClickListener { Toast.makeText(holder.itemView.context, "Kamu memilih " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show() }
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listHero[holder.adapterPosition]) }
     }
 
     inner class CardViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -41,5 +47,9 @@ class CardViewHeroAdapter(val listHero: ArrayList<Hero>): RecyclerView.Adapter<C
         var tvDetail: TextView = itemView.findViewById(R.id.tv_item_detail)
         var btnFavorite: Button = itemView.findViewById(R.id.btn_set_favorite)
         var btnShare: Button = itemView.findViewById(R.id.btn_set_share)
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Hero)
     }
 }
