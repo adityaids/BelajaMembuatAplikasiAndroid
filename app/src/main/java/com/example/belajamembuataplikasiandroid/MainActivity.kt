@@ -9,16 +9,23 @@ import android.widget.Button
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btnBarVolume: Button
     private lateinit var btnIntent: Button
+    private lateinit var btnMyView: Button
+    private lateinit var btnRv: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         btnBarVolume = findViewById(R.id.btn_bar_volume)
-        btnBarVolume.setOnClickListener(this)
-
+        btnMyView = findViewById(R.id.btn_myview)
         btnIntent = findViewById(R.id.btn_intent)
+        btnRv = findViewById(R.id.btn_rv)
+
+
+        btnBarVolume.setOnClickListener(this)
         btnIntent.setOnClickListener(this)
+        btnRv.setOnClickListener(this)
+        btnMyView.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -33,6 +40,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.btn_myview -> {
                 val intent = Intent(this@MainActivity, MyViewActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.btn_rv -> {
+                val intent = Intent(this@MainActivity, RecyclerViewActivity::class.java)
                 startActivity(intent)
             }
         }
